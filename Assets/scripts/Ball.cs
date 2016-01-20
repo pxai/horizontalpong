@@ -23,50 +23,26 @@ public class Ball : MonoBehaviour {
 		this.rigidbody2D.velocity = Vector2.right * speed;
 	}
 
-	void OnCollisionEnter2D(Collision2D col) {
-		// Note: 'col' holds the collision information. If the
-		// Ball collided with a racket, then:
-		//   col.gameObject is the racket
-		//   col.transform.position is the racket's position
-		//   col.collider is the racket's collider
-		
-		// Hit the left Racket?
-		if (col.gameObject.name == "paddle1") {
-			// Calculate hit Factor
-			float y = hitFactor(transform.position,
-			                    col.transform.position,
-			                    col.collider.bounds.size.y);
-			
-			// Calculate direction, make length=1 via .normalized
-			Vector2 dir = new Vector2(1, y).normalized;
-			
-			// Set Velocity with dir * speed
-			this.rigidbody2D.velocity = dir * speed;
+	void OnCollisionEnter2D(Collision2D collision) {
+		Vector2 direction;
+				
+		// (ball.y - paddle.y) / paddle.height
+		float y = (transform.position.y - collision.transform.position.y)/collision.collider.bounds.size.y;
+
+		Debug.Log (transform.position.y + "-" + collision.transform.position.y + "/" + collision.collider.bounds.size.y + " = " + y);
+
+		// paddle1
+		if (collision.gameObject.name == "paddle1") {
+			direction = new Vector2(1, y).normalized;
+			this.rigidbody2D.velocity = direction * speed;
 		}
 		
-		// Hit the right Racket?
-		if (col.gameObject.name == "paddle2") {
-			// Calculate hit Factor
-			float y = hitFactor(transform.position,
-			                    col.transform.position,
-			                    col.collider.bounds.size.y);
-			
-			// Calculate direction, make length=1 via .normalized
-			Vector2 dir = new Vector2(-1, y).normalized;
-			
-			// Set Velocity with dir * speed
-			this.rigidbody2D.velocity = dir * speed;
+		// paddle2
+		if (collision.gameObject.name == "paddle2") {
+			direction = new Vector2(-1, y).normalized;
+			this.rigidbody2D.velocity = direction * speed;
 		}
 	}
 
-	float hitFactor(Vector2 ballPos, Vector2 racketPos,
-	                float racketHeight) {
-		// ascii art:
-		// ||  1 <- at the top of the racket
-		// ||
-		// ||  0 <- at the middle of the racket
-		// ||
-		// || -1 <- at the bottom of the racket
-		return (ballPos.y - racketPos.y) / racketHeight;
-	}
+
 }

@@ -1,8 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\GenericMenu\Assets\LevelLoader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Ball.cs">
     <Files>
-      <File FileName="..\GenericMenu\Assets\LevelLoader.cs" Line="15" Column="8" />
+      <File FileName="Assets\scripts\GameStatus.cs" Line="31" Column="40" />
+      <File FileName="Assets\scripts\Paddle.cs" Line="19" Column="3" />
+      <File FileName="Assets\scripts\LeftCollider.cs" Line="13" Column="2" />
+      <File FileName="Assets\scripts\RightCollider.cs" Line="16" Column="1" />
+      <File FileName="Assets\scripts\Ball.cs" Line="22" Column="1" />
+      <File FileName="Assets\scripts\WinSceneScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\LevelLoader.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

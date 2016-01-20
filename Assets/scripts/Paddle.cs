@@ -12,6 +12,7 @@ public class Paddle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		Vector3 paddlePosition = new Vector3 (this.transform.position.x ,this.transform.position.y,0);
 
 		float v = Input.GetAxisRaw(axeName);
