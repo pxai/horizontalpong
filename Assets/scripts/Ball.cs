@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour {
 	void spawn () {
 		dead = false;
 		this.transform.position = new Vector3 (5f,5f,0f);
-		this.rigidbody2D.velocity = Vector2.right * speed;
+		this.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -34,13 +34,13 @@ public class Ball : MonoBehaviour {
 		// paddle1
 		if (collision.gameObject.name == "paddle1") {
 			direction = new Vector2(1, y).normalized;
-			this.rigidbody2D.velocity = direction * speed;
+			this.GetComponent<Rigidbody2D>().velocity = direction * speed;
 		}
 		
 		// paddle2
 		if (collision.gameObject.name == "paddle2") {
 			direction = new Vector2(-1, y).normalized;
-			this.rigidbody2D.velocity = direction * speed;
+			this.GetComponent<Rigidbody2D>().velocity = direction * speed;
 		}
 	}
 
